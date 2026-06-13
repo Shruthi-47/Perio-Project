@@ -1,0 +1,11 @@
+# Render Blueprint — deploy at https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: perio-predict
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run SVMperio.py --server.port=$PORT --server.address=0.0.0.0 --server.headless true --browser.gatherUsageStats false
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
